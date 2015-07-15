@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
   echo "deb http://download.virtualbox.org/virtualbox/debian jessie contrib" >> /etc/apt/sources.list.d/virtualbox.list && \
   apt-get update && \
   apt-get install -y \
-  virtualbox-5.0 \
+  virtualbox-4.3 \
   && rm -rf /var/lib/apt/lists/*
 
 ENTRYPOINT	[ "/usr/bin/virtualbox" ]
