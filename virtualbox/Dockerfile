@@ -1,3 +1,13 @@
+# VirtualBox in a container
+#
+# USAGE :
+#   docker run -d \
+#     -v /tmp/.X11-unix:/tmp/.X11-unix \
+#     -e DISPLAY=unix$DISPLAY \
+#     --privileged \
+#     --name virtualbox \
+#     jdecool/virtualbox
+
 FROM debian:jessie
 MAINTAINER Jérémy DECOOL <contact@jdecool.fr>
 

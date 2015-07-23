@@ -1,3 +1,10 @@
+# HHVM (Facebook HipHop Virtual Machine) in a container
+#
+# USAGE :
+#   docker run --rm -it \
+#     -v $(pwd):/root \
+#     jdecool/hhvm [COMMAND]
+
 FROM debian:jessie
 MAINTAINER Jérémy DECOOL <contact@jdecool.fr>
 

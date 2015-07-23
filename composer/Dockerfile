@@ -1,3 +1,10 @@
+# Composer (PHP dependency manager) in a container
+#
+# USAGE :
+#   docker run --rm -it \
+#     -v $(pwd):/app \
+#     jdecool/composer [COMMAND]
+
 FROM php:5.6-cli
 MAINTAINER Jérémy DECOOL <contact@jdecool.fr>
 
