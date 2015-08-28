@@ -28,11 +28,19 @@ RUN docker-php-ext-install mcrypt zip bz2 mbstring exif \
 RUN echo "memory_limit=1024M" > /usr/local/etc/php/conf.d/memory-limit.ini
 RUN echo "date.timezone = Europe/Paris" > /usr/local/etc/php/conf.d/timezone.ini
 
-ENV COMPOSER_HOME /root/composer
+ENV HOME=/home/doe
+ENV COMPOSER_HOME /home/doe/composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 VOLUME ["/app"]
 WORKDIR /app
+
+RUN groupadd -f -g 1000 doe && \
+  useradd -u 1000 -g doe doe && \
+  mkdir -p /home/doe
+
+RUN chown -R doe:doe /app && \
+  chown -R doe:doe /home/doe
 
 CMD ["-"]
 ENTRYPOINT ["composer"]

@@ -14,4 +14,10 @@ MAINTAINER Jérémy DECOOL <contact@jdecool.fr>
 RUN apt-get update && apt-get install -y \
   keepass2
 
+RUN groupadd -f -g 1000 doe && \
+  useradd -u 1000 -g doe doe && \
+  mkdir -p /home/doe
+
+RUN chown -R doe:doe /home/doe
+
 CMD keepass2
