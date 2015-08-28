@@ -10,8 +10,7 @@
 FROM jekyll/stable
 MAINTAINER Jérémy DECOOL <contact@jdecool.fr>
 
-RUN apt-get update && apt-get install -y \
-  openjdk-8-jre ncftp --no-install-recommends
+RUN apk --update add openjdk7-jre ncftp
 
 RUN gem install glynn --source http://gemcutter.org \
   && gem install chronic \
