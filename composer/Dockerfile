@@ -16,14 +16,19 @@ RUN apt-get update && apt-get install -y \
   libmcrypt-dev \
   libpng12-dev \
   libbz2-dev \
+  libicu-dev \
+  zlib1g-dev \
   php-pear \
   curl \
   git \
+  g++ \
   && rm -r /var/lib/apt/lists/*
 
 RUN docker-php-ext-install mcrypt zip bz2 mbstring exif \
   && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-  && docker-php-ext-install gd
+  && docker-php-ext-install gd \
+  && docker-php-ext-configure intl \
+  && docker-php-ext-install intl
 
 RUN echo "memory_limit=1024M" > /usr/local/etc/php/conf.d/memory-limit.ini
 RUN echo "date.timezone = Europe/Paris" > /usr/local/etc/php/conf.d/timezone.ini
