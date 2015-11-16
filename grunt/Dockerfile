@@ -7,6 +7,9 @@
 
 FROM node:latest
 
+RUN apt-get update && apt-get install -y ruby ruby-dev
+RUN gem install compass
+
 RUN npm install -g grunt-cli
 
 VOLUME ["/data"]
