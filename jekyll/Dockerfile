@@ -13,5 +13,4 @@ MAINTAINER Jérémy DECOOL <contact@jdecool.fr>
 RUN apk --update add openjdk7-jre ncftp
 
 RUN gem install glynn --source http://gemcutter.org \
-  && gem install chronic \
-  && gem install yui-compressor
+  && gem install chronic yui-compressor algoliasearch-jekyll
