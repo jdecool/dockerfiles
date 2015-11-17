@@ -7,7 +7,7 @@
 #     -p 127.0.0.1:4000:4000 \
 #     jdecool/jekyll jekyll [COMMAND]
 
-FROM jekyll/stable
+FROM jekyll/jekyll:stable
 MAINTAINER Jérémy DECOOL <contact@jdecool.fr>
 
 RUN apk --update add openjdk7-jre ncftp

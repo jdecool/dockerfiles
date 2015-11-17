@@ -9,5 +9,5 @@
 FROM elasticsearch:latest
 MAINTAINER Jérémy DECOOL <contact@jdecool.fr>
 
-RUN plugin -i elasticsearch/marvel/latest
-RUN plugin -i lmenezes/elasticsearch-kopf
+RUN plugin install elasticsearch/marvel/latest
+RUN plugin install lmenezes/elasticsearch-kopf
