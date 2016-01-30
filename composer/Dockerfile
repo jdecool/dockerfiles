@@ -47,5 +47,7 @@ RUN groupadd -f -g 1000 doe && \
 RUN chown -R doe:doe /app && \
   chown -R doe:doe /home/doe
 
+RUN composer global require hirak/prestissimo
+
 CMD ["-"]
 ENTRYPOINT ["composer"]
