@@ -8,6 +8,8 @@
 FROM debian:jessie
 MAINTAINER Jérémy DECOOL <contact@jdecool.fr>
 
+ENV VERSION 7.0.10
+
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
 	autoconf \
 	build-essential \
@@ -15,9 +17,9 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
 	libxml2-dev \
 	wget
 
-RUN wget -qO php-7.0.0RC4.tar.bz2 https://downloads.php.net/~ab/php-7.0.0RC4.tar.bz2 \
-	&& tar xjf php-7.0.0RC4.tar.bz2 \
-	&& cd php-7.0.0RC4 \
+RUN wget -qO php-$VERSION.tar.bz2 http://fr2.php.net/get/php-$VERSION.tar.bz2/from/this/mirror \
+	&& tar xjf php-$VERSION.tar.bz2 \
+	&& cd php-$VERSION \
 	&& ./configure \
 		--disable-cgi \
 		--enable-mbstring \
@@ -33,8 +35,8 @@ RUN wget -qO php-7.0.0RC4.tar.bz2 https://downloads.php.net/~ab/php-7.0.0RC4.tar
 	&& pear config-set php_ini /usr/local/lib/php.ini \
 	&& pecl install pthreads
 
-RUN rm php-7.0.0RC4.tar.bz2 \
-	&& rm -rf php-7.0.0RC4 \
+RUN rm php-$VERSION.tar.bz2 \
+	&& rm -rf php-$VERSION \
 	&& apt-get purge -y autoconf build-essential wget .+-dev \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
