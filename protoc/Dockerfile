@@ -8,7 +8,9 @@
 FROM alpine:3.6
 MAINTAINER Jérémy DECOOL <contact@jdecool.fr>
 
-RUN apk add --no-cache --virtual .persistent-deps protobuf
+RUN apk add --no-cache --virtual .persistent-deps \
+        protobuf \
+        protobuf-dev
 
 VOLUME ["/app"]
 WORKDIR /app
