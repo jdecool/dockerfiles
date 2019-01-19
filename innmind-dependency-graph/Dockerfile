@@ -1,3 +1,10 @@
+# Tool to help visualize the various dependencies between packages
+#
+# USAGE :
+#   docker run --rm -it \
+#     -v $(pwd):/data \
+#     jdecool/innmind-dependency-graph [COMMAND]
+
 FROM php:7.3-cli-alpine
 
 RUN apk add --no-cache --virtual .persistent-deps git wget
@@ -16,4 +23,7 @@ RUN wget -O /usr/bin/composer https://getcomposer.org/composer.phar \
     && composer global require innmind/dependency-graph \
     && ln -s /root/.composer/vendor/bin/dependency-graph /usr/bin/dependency-graph
 
-ENTRYPOINT ["dependency-graph"]
+ADD entrypoint.sh /usr/bin/entrypoint.sh
+
+ENTRYPOINT ["entrypoint.sh"]
+CMD ["dependency-graph"]
