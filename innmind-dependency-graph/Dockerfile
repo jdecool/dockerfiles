@@ -7,7 +7,7 @@
 
 FROM php:7.3-cli-alpine
 
-RUN apk add --no-cache --virtual .persistent-deps git wget
+RUN apk add --no-cache --virtual .persistent-deps git graphviz wget
 
 RUN apk add --update \
         icu \
